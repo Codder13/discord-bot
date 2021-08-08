@@ -1,11 +1,15 @@
-import asyncio
-
 import discord
-from discord.ext import commands
+from random import randint
+import requests
+import os
+from dotenv import load_dotenv
 
-from resources import *
 
 client = discord.Client()
+
+load_dotenv()
+my_secret = os.environ['TOKEN']
+many_jokes = []
 
 
 def get_joke():
@@ -34,6 +38,7 @@ async def on_message(message):
 
     if message.content.startswith("chill hello" or "Chill hello"):
         await message.channel.send('Hello!')
+        print('hello')
 
     if message.content.startswith("chilling" or "Chilling"):
         await message.channel.send("Glad you like the server!!")
@@ -42,8 +47,7 @@ async def on_message(message):
         await message.channel.send(get_joke())
 
 
-
-client.run('ODcyMDk3ODIzODk2NzcyNjI5.YQk6ZA.e-SfMzUoo1sjfO-jM12GjZ5MZWo')
+client.run(my_secret)
 
 if __name__ == '__main__':
     print()

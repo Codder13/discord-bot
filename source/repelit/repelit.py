@@ -2,12 +2,15 @@ import discord
 from random import randint
 import requests
 from keep_alive import keep_alive
+import os
+from dotenv import load_dotenv
 
 
 client = discord.Client()
 
+load_dotenv()
+my_secret = os.environ['TOKEN']
 many_jokes = []
-
 
 
 def get_joke():
@@ -47,7 +50,7 @@ async def on_message(message):
 
 keep_alive()
 
-client.run('ODcyMDk3ODIzODk2NzcyNjI5.YQk6ZA.e-SfMzUoo1sjfO-jM12GjZ5MZWo')
+client.run(my_secret)
 
 if __name__ == '__main__':
     print()
